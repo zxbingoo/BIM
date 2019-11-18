@@ -6,7 +6,84 @@
 
     <groupId>com.bingoo.im</groupId>
     <artifactId>bim</artifactId>
+    <packaging>pom</packaging>
     <version>1.0</version>
+    <modules>
+        <module>bim-server</module>
+        <module>bim-common</module>
+        <module>bim-client</module>
+        <module>bim-api</module>
+        <module>bim-provider</module>
+    </modules>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.1.RELEASE</version>
+    </parent>
+
+    <properties>
+        <netty.version>4.1.42.Final</netty.version>
+        <bim.version>1.0</bim.version>
+        <guava.version>19.0</guava.version>
+        <fastjson.version>1.2.31</fastjson.version>
+        <slf4j.version>1.7.29</slf4j.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <artifactId>bim-common</artifactId>
+                <groupId>com.bingoo.im</groupId>
+                <version>${bim.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 
+    <!--配置maven仓库aliyun-->
+    <repositories>
+        <repository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 </project>

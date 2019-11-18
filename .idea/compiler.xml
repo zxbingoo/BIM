@@ -6,7 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="bim" />
+        <module name="bim-api" />
+        <module name="bim-client" />
+        <module name="bim-common" />
+        <module name="bim-provider" />
+        <module name="bim-server" />
       </profile>
     </annotationProcessing>
   </component>
