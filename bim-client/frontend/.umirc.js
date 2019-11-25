@@ -7,7 +7,7 @@ export default {
       path: '/',
       component: '../layouts/index',
       routes: [
-        { path: '/', component: '../pages/index' }
+        { path: '/', component: '../pages/index' },
       ]
     }
   ],
@@ -19,7 +19,7 @@ export default {
       dynamicImport: false,
       title: 'frontend',
       dll: false,
-      
+
       routes: {
         exclude: [
           /models\//,
@@ -31,7 +31,4 @@ export default {
       },
     }],
   ],
-  routes: [
-
-  ]
 }
