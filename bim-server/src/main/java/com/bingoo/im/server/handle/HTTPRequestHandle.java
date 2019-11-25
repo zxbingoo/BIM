@@ -26,7 +26,7 @@ public class HTTPRequestHandle extends SimpleChannelInboundHandler<FullHttpReque
                 .getCodeSource().getLocation();
         try {
             String path = location.toURI() + "index.html";
-            path = path.contains("file:") ? path : path.substring(5);
+            path = !path.contains("file:") ? path : path.substring(5);
             INDEX = new File(path);
         } catch (URISyntaxException e) {
             throw new IllegalStateException("Unable to locate index.html", e);

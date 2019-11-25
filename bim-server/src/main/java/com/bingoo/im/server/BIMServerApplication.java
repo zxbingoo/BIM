@@ -1,6 +1,6 @@
 package com.bingoo.im.server;
 
-import com.bingoo.im.server.config.BootConfig;
+import com.bingoo.im.server.config.PropertiesConfig;
 import com.bingoo.im.server.handle.ChatServerInitializer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
@@ -12,13 +12,9 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.util.concurrent.ImmediateEventExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.context.WebServerInitializedEvent;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.ConfigurableApplicationContext;
 
 import java.net.InetSocketAddress;
 
@@ -40,16 +36,15 @@ public class BIMServerApplication {
 
     public static void main(String[] args) throws Exception {
         ApplicationContext context = SpringApplication.run(BIMServerApplication.class, args);
-        BootConfig bootConfig = context.getBean(BootConfig.class);
+        PropertiesConfig propertiesConfig = context.getBean(PropertiesConfig.class);
         final BIMServerApplication endpoint = new BIMServerApplication();
-        ChannelFuture future = endpoint.start(new InetSocketAddress(bootConfig.getPort()));
+        endpoint.start(propertiesConfig.getPort());
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
             public void run() {
                 endpoint.destroy();
             }
         });
-        future.channel().closeFuture().syncUninterruptibly();
     }
 
     public void destroy() {
@@ -60,14 +55,12 @@ public class BIMServerApplication {
         group.shutdownGracefully();
     }
 
-    private ChannelFuture start(InetSocketAddress address) throws Exception {
+    private void start(int port) throws Exception {
         ServerBootstrap bootstrap = new ServerBootstrap();
         bootstrap.group(group)
                 .channel(NioServerSocketChannel.class)
                 .childHandler(new ChatServerInitializer(channelGroup));
-        ChannelFuture future = bootstrap.bind(address);
-        channel = future.channel();
-        future.syncUninterruptibly();
-        return future;
+        channel = bootstrap.bind(port).sync().channel();
+        channel.closeFuture().sync();
     }
 }

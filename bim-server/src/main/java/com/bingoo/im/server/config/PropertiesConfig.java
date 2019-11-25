@@ -5,10 +5,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties
-public class BootConfig {
+public class PropertiesConfig {
 
-    @Value("${server.port:8888}")
+    @Value("${bim.server.port:8888}")
     private int port;
 
     public int getPort() {
