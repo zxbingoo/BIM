@@ -12,5 +12,15 @@
     <groupId>com.bingoo.im</groupId>
     <artifactId>bim-provider</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba.spring.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+        </dependency>
 
+        <dependency>
+            <artifactId>bim-api</artifactId>
+            <groupId>com.bingoo.im</groupId>
+        </dependency>
+    </dependencies>
 </project>

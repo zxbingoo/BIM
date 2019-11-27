@@ -76,16 +76,6 @@ class UserEditModal extends Component {
                 })(<Input />)
               }
             </FormItem>
-            <FormItem
-              {...formItemLayout}
-              label="Website"
-            >
-              {
-                getFieldDecorator('website', {
-                  initialValue: website,
-                })(<Input />)
-              }
-            </FormItem>
           </Form>
         </Modal>
       </span>

@@ -12,5 +12,10 @@
     <groupId>com.bingoo.im</groupId>
     <artifactId>bim-api</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <artifactId>bim-common</artifactId>
+            <groupId>com.bingoo.im</groupId>
+        </dependency>
+    </dependencies>
 </project>

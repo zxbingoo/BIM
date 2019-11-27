@@ -36,6 +36,11 @@ function Users({ dispatch, list: dataSource, loading, total, page: current }) {
 
   const columns = [
     {
+      title: 'id',
+      dataIndex: 'id',
+      key: 'id',
+    },
+    {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
@@ -45,11 +50,6 @@ function Users({ dispatch, list: dataSource, loading, total, page: current }) {
       title: 'Email',
       dataIndex: 'email',
       key: 'email',
-    },
-    {
-      title: 'Website',
-      dataIndex: 'website',
-      key: 'website',
     },
     {
       title: 'Operation',
@@ -100,7 +100,7 @@ function mapStateToProps(state) {
     list,
     total,
     page,
-    loading: state.loading.models.users,
+    loading: state.loading.models.users,//对应models里的namespace
   };
 }
 
