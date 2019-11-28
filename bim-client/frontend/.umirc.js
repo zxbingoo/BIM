@@ -6,6 +6,7 @@ export default {
       component: '../layouts/index',
       routes: [
         { path: '/', component: '../pages/index' },
+        { path: '/login', component: '../pages/login/page' },
         { path: '/users', component: '../pages/users/page' },
       ]
     }

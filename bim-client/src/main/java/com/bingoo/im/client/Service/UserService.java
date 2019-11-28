@@ -18,7 +18,7 @@ public class UserService {
 
     public BaseResponse login(UserInfo userInfo) {
         if(!loginService.check(userInfo)){
-            BaseResponse.fail(BaseResponse.PARAMETER_ERROR, "用户不存在");
+            return BaseResponse.fail(BaseResponse.PARAMETER_ERROR, "用户不存在");
         }
 //        loginService.connetToServer(userInfo);
         return null;
