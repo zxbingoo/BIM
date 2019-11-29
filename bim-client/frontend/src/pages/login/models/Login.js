@@ -3,9 +3,6 @@ import * as loginService from '../services/Login';
 export default {
   namespace: 'login',
   state: {
-    list: [],
-    total: null,
-    page: null,
   },
   //用于对state作格式化，并返回
   reducers: {

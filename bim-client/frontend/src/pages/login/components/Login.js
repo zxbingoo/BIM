@@ -20,6 +20,7 @@ function Login({ dispatch, loading}) {
 }
 
 function mapStateToProps(state) {
+  debugger
   const {  } = state.login;
   return {
     // loading: state.loading.models.login,//对应models里的namespace
