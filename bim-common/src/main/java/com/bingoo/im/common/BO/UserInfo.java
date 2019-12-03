@@ -1,13 +1,15 @@
 package com.bingoo.im.common.BO;
 
+import java.io.Serializable;
+
 /**
  * @author jianbin
  * @date 2019/11/27
  */
-public class UserInfo {
+public class UserInfo implements Serializable {
     private Integer userId;
-    private String userName;
-    private String passward;
+    private String username;
+    private String password;
 
     public Integer getUserId() {
         return userId;
@@ -18,21 +20,21 @@ public class UserInfo {
         return this;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public UserInfo setUserName(String userName) {
-        this.userName = userName;
+    public UserInfo setUsername(String username) {
+        this.username = username;
         return this;
     }
 
-    public String getPassward() {
-        return passward;
+    public String getPassword() {
+        return password;
     }
 
-    public UserInfo setPassward(String passward) {
-        this.passward = passward;
+    public UserInfo setPassword(String password) {
+        this.password = password;
         return this;
     }
 }

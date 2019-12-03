@@ -1,12 +1,23 @@
 import { connect } from 'dva';
 import styles from './Login.css';
 import LoginForm from './LoginForm';
+import { message } from 'antd';
+import { routerRedux } from 'dva/router';
 
-function Login({ dispatch, loading}) {
+function Login({dispatch}) {
   function login(values) {
     dispatch({
-      type: '/login/login',
+      type: 'sysLogin/login',
       payload: { values },
+    }).then(result => {
+      if(result.code == 0){
+        message.info("登陆成功");
+        dispatch(routerRedux.push({
+          pathname: '/',
+        }));
+      }else {
+        message.error(result.info);
+      }
     });
   }
 
@@ -20,8 +31,7 @@ function Login({ dispatch, loading}) {
 }
 
 function mapStateToProps(state) {
-  debugger
-  const {  } = state.login;
+  const {  } = state.sysLogin;
   return {
     // loading: state.loading.models.login,//对应models里的namespace
   };

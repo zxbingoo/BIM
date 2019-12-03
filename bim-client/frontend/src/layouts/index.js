@@ -1,17 +1,16 @@
 import React from 'react';
 import styles from './index.css';
-import Header from './Header';
 import withRouter from 'umi/withRouter';
+import Logged from './logged/Logged';
+import Login from './login/Login';
 
 function Layout({ children, location }) {
+  console.log(location.pathname);
+  let Container = location.pathname.indexOf('/login') < 0 ? Logged : Login;
+
   return (
     <div className={styles.normal}>
-      <Header location={location} />
-      <div className={styles.content}>
-        <div className={styles.main}>
-          {children}
-        </div>
-      </div>
+      <Container children={children} location={location}/>
     </div>
   );
 }

@@ -23,14 +23,14 @@ public class LoginServiceImpl implements ILoginService {
 
     private static final Map<String, UserInfo> users = new HashMap();
     static {
-        users.put(String.format("%s_%s", 1, "123456"),
-                new UserInfo().setUserName("bingoo").setPassward("123456").setUserId(1));
-        users.put(String.format("%s_%s", 2, "123456"),
-                new UserInfo().setUserName("LaJiQueBan").setPassward("123456").setUserId(2));
+        users.put(String.format("%s_%s", "bingoo", "123456"),
+                new UserInfo().setUsername("bingoo").setPassword("123456").setUserId(1));
+        users.put(String.format("%s_%s", "root", "123456"),
+                new UserInfo().setUsername("root").setPassword("123456").setUserId(2));
     }
 
     @Override
     public Boolean check(UserInfo userInfo) {
-        return Checker.isNone(users.get(String.format("%s_%s", userInfo.getUserId(), userInfo.getPassward())));
+        return Checker.isNone(users.get(String.format("%s_%s", userInfo.getUsername(), userInfo.getPassword())));
     }
 }

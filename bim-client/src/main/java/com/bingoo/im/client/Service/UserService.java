@@ -17,10 +17,10 @@ public class UserService {
     private ILoginService loginService;
 
     public BaseResponse login(UserInfo userInfo) {
-        if(!loginService.check(userInfo)){
+        if(loginService.check(userInfo)){
             return BaseResponse.fail(BaseResponse.PARAMETER_ERROR, "用户不存在");
         }
 //        loginService.connetToServer(userInfo);
-        return null;
+        return BaseResponse.success();
     }
 }
